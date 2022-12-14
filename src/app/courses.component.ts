@@ -22,6 +22,12 @@ import { CoursesService } from './courses.service';
     <div (click)="onDivClicked()" >
     <button (click)="onSave($event)" >save2</button>
     </div>
+    <br/><br/>
+    <input (keyup.enter) ="onKeyUp()" />
+    <input (keyup.enter) ="onKeyUp3($event)"/>
+    <input #email (keyup.enter) ="onKeyUp2(email.value)"/>
+    <br/> 
+    <input [(ngModel)] = "result" (keyup.enter) ="onKeyUp4()" />
     `
 })
 
@@ -48,6 +54,25 @@ export class CoursesComponent{
 
     onDivClicked(){
         console.log("button on div was clicked")
+    }
+
+    onKeyUp()
+    {
+        console.log("ENTER was pressed");
+    }
+
+    onKeyUp2(email:any)
+    {
+        console.log(email);
+    }
+    onKeyUp3($event:any)
+    {
+        console.log($event.target.value)
+    }
+    result ="owen"
+    onKeyUp4()
+    {
+        console.log(this.result);
     }
     // logic for calling HTTP EndPoint(will be tight caouple to the endpoint. and other place use this need to duplicate the code)
 }
